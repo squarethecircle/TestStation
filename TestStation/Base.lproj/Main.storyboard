@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A329f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="N3e-YM-Th6">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="snD-cn-3Y1">
+            <objects>
+                <tabBarController id="N3e-YM-Th6" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="2lC-6x-Ml6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Yoo-5E-2Zt" kind="relationship" relationship="viewControllers" id="5I3-VZ-pea"/>
+                        <segue destination="P1l-Sr-RVp" kind="relationship" relationship="viewControllers" id="qwf-oi-XTs"/>
+                        <segue destination="cNm-2l-XoM" kind="relationship" relationship="viewControllers" id="P8X-vn-d1W"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oBA-qy-QI9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="320" y="203"/>
+        </scene>
+        <!--Waypoint Editor-->
+        <scene sceneID="r2P-13-cGn">
+            <objects>
+                <viewController id="Yoo-5E-2Zt" customClass="MapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XrB-2G-z8Z"/>
+                        <viewControllerLayoutGuide type="bottom" id="sy6-yE-ohP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hk8-1w-57Q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Waypoint Editor" image="near" id="LIq-Fl-Rar"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BaH-po-xXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1129" y="213"/>
+        </scene>
+        <!--Gains-->
+        <scene sceneID="sQM-cc-yQP">
+            <objects>
+                <viewController id="P1l-Sr-RVp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Dv-Hr-xcO"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nik-cW-z9o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YcR-tc-5HN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Gains" image="sliders_up_2" id="8M0-p4-RdW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M2v-is-CWU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1129" y="909"/>
+        </scene>
+        <!--Telemetry-->
+        <scene sceneID="ie2-zA-WBW">
+            <objects>
+                <viewController id="cNm-2l-XoM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tZR-PK-Wo3"/>
+                        <viewControllerLayoutGuide type="bottom" id="4L9-bb-PrL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kaX-c2-xlF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Telemetry" image="mobile_signal" id="xK0-EP-XOJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tiP-oD-mhs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="438" y="993"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="mobile_signal" width="32" height="32"/>
+        <image name="near" width="32" height="32"/>
+        <image name="sliders_up_2" width="32" height="32"/>
+    </resources>
+</document>
