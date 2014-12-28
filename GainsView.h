@@ -1,5 +1,5 @@
 //
-//  GainsViewController.h
+//  GainsView.h
 //  TestStation
 //
 //  Created by Sachith Gullapalli on 12/27/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GainsViewController : UIViewController
+@interface GainsView : UIView
 
 @end

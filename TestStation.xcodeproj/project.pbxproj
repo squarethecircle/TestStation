@@ -19,10 +19,10 @@
 		FE2752721A4E6E1500A3C09E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2752711A4E6E1500A3C09E /* libsqlite3.dylib */; };
 		FE2752741A4E6E1F00A3C09E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2752731A4E6E1F00A3C09E /* libz.dylib */; };
 		FE2752751A4E6E9B00A3C09E /* Mapbox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FE2752691A4E6D3500A3C09E /* Mapbox.bundle */; };
-		FE27527B1A4E711E00A3C09E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE27527A1A4E711E00A3C09E /* MapViewController.m */; };
 		FE2752801A4FA0BD00A3C09E /* CLLocationWithEqualityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE27527F1A4FA0BD00A3C09E /* CLLocationWithEqualityTest.m */; };
-		FE2752891A4FB08F00A3C09E /* GainsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2752881A4FB08F00A3C09E /* GainsViewController.m */; };
-		FE27528C1A4FB09D00A3C09E /* TelemetryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE27528B1A4FB09D00A3C09E /* TelemetryViewController.m */; };
+		FE27528F1A4FB3D100A3C09E /* GainsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE27528E1A4FB3D100A3C09E /* GainsView.m */; };
+		FE2752921A4FB3E300A3C09E /* TelemetryView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2752911A4FB3E300A3C09E /* TelemetryView.m */; };
+		FE2752951A4FB3F500A3C09E /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2752941A4FB3F500A3C09E /* MapView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,14 +73,14 @@
 		FE27526E1A4E6DFE00A3C09E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FE2752711A4E6E1500A3C09E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		FE2752731A4E6E1F00A3C09E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		FE2752791A4E711E00A3C09E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		FE27527A1A4E711E00A3C09E /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		FE27527E1A4FA0BD00A3C09E /* CLLocationWithEqualityTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLocationWithEqualityTest.h; sourceTree = "<group>"; };
 		FE27527F1A4FA0BD00A3C09E /* CLLocationWithEqualityTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLocationWithEqualityTest.m; sourceTree = "<group>"; };
-		FE2752871A4FB08F00A3C09E /* GainsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GainsViewController.h; sourceTree = "<group>"; };
-		FE2752881A4FB08F00A3C09E /* GainsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GainsViewController.m; sourceTree = "<group>"; };
-		FE27528A1A4FB09D00A3C09E /* TelemetryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelemetryViewController.h; sourceTree = "<group>"; };
-		FE27528B1A4FB09D00A3C09E /* TelemetryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelemetryViewController.m; sourceTree = "<group>"; };
+		FE27528D1A4FB3D100A3C09E /* GainsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GainsView.h; sourceTree = "<group>"; };
+		FE27528E1A4FB3D100A3C09E /* GainsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GainsView.m; sourceTree = "<group>"; };
+		FE2752901A4FB3E300A3C09E /* TelemetryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelemetryView.h; sourceTree = "<group>"; };
+		FE2752911A4FB3E300A3C09E /* TelemetryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelemetryView.m; sourceTree = "<group>"; };
+		FE2752931A4FB3F500A3C09E /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
+		FE2752941A4FB3F500A3C09E /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,12 +109,12 @@
 		FE27522F1A4E648800A3C09E = {
 			isa = PBXGroup;
 			children = (
-				FE2752871A4FB08F00A3C09E /* GainsViewController.h */,
-				FE2752881A4FB08F00A3C09E /* GainsViewController.m */,
-				FE27528A1A4FB09D00A3C09E /* TelemetryViewController.h */,
-				FE27528B1A4FB09D00A3C09E /* TelemetryViewController.m */,
-				FE2752791A4E711E00A3C09E /* MapViewController.h */,
-				FE27527A1A4E711E00A3C09E /* MapViewController.m */,
+				FE27528D1A4FB3D100A3C09E /* GainsView.h */,
+				FE27528E1A4FB3D100A3C09E /* GainsView.m */,
+				FE2752901A4FB3E300A3C09E /* TelemetryView.h */,
+				FE2752911A4FB3E300A3C09E /* TelemetryView.m */,
+				FE2752931A4FB3F500A3C09E /* MapView.h */,
+				FE2752941A4FB3F500A3C09E /* MapView.m */,
 				FE27527E1A4FA0BD00A3C09E /* CLLocationWithEqualityTest.h */,
 				FE27527F1A4FA0BD00A3C09E /* CLLocationWithEqualityTest.m */,
 				FE2752731A4E6E1F00A3C09E /* libz.dylib */,
@@ -310,11 +310,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE27528C1A4FB09D00A3C09E /* TelemetryViewController.m in Sources */,
-				FE27527B1A4E711E00A3C09E /* MapViewController.m in Sources */,
+				FE27528F1A4FB3D100A3C09E /* GainsView.m in Sources */,
 				FE2752801A4FA0BD00A3C09E /* CLLocationWithEqualityTest.m in Sources */,
-				FE2752891A4FB08F00A3C09E /* GainsViewController.m in Sources */,
 				FE2752411A4E648800A3C09E /* AppDelegate.m in Sources */,
+				FE2752951A4FB3F500A3C09E /* MapView.m in Sources */,
+				FE2752921A4FB3E300A3C09E /* TelemetryView.m in Sources */,
 				FE27523E1A4E648800A3C09E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
