@@ -57,10 +57,16 @@
     [self.mapView removeAnnotation: self.path];
     [self.mapView removeAnnotation: annotation];
     [self.waypoints removeObject:[[CLLocationWithEqualityTest alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude]];
-    RMPolylineAnnotation *newLine = [[RMPolylineAnnotation alloc] initWithMapView:self.mapView points:self.waypoints];
-    [self.mapView addAnnotation:newLine];
-    self.path = newLine;
-
+    if ([self.waypoints count] > 0)
+    {
+        RMPolylineAnnotation *newLine = [[RMPolylineAnnotation alloc] initWithMapView:self.mapView points:self.waypoints];
+        [self.mapView addAnnotation:newLine];
+        self.path = newLine;
+    }
+    else
+    {
+        self.path = NULL;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
