@@ -1,5 +1,5 @@
 //
-//  TelemetryView.h
+//  TelemetryViewController.h
 //  TestStation
 //
 //  Created by Sachith Gullapalli on 12/27/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TelemetryView : UIView
+@interface TelemetryViewController : UIViewController
 
 @end

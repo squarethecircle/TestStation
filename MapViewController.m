@@ -1,21 +1,28 @@
 //
-//  MapView.m
+//  MapViewController.m
 //  TestStation
 //
-//  Created by Sachith Gullapalli on 12/27/14.
+//  Created by Sachith Gullapalli on 12/26/14.
 //  Copyright (c) 2014 Grovio. All rights reserved.
 //
 
-#import "MapView.h"
+#import "MapViewController.h"
+#import "CLLocationWithEqualityTest.h"
 
-@implementation MapView
+@interface MapViewController ()
+@property (strong,nonatomic) RMMapView *mapView;
+@property (strong,nonatomic) NSMutableArray *waypoints;
+@property (strong,nonatomic) RMPolylineAnnotation *path;
+@end
 
+@implementation MapViewController
 
-- (void)baseInit
-{
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
     CLLocationCoordinate2D defaultcoord = {37.224920, -80.018715};
     RMMapboxSource *mapSource = [[RMMapboxSource alloc] initWithMapID:@"sachith.ido0pogc"];
-    self.mapView = [[RMMapView alloc] initWithFrame:self.frame andTilesource:mapSource];
+    self.mapView = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:mapSource];
     self.mapView.centerCoordinate = defaultcoord;
     self.mapView.maxZoom = 18;
     self.mapView.minZoom = 2;
@@ -23,32 +30,11 @@
     self.mapView.delegate = self;
     self.waypoints = [NSMutableArray arrayWithCapacity:50];
     self.path = NULL;
-    [self addSubview: self.mapView];
+    [self.view addSubview:self.mapView];
+    NSLog(@"View initialized");
     
-}
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self)
-    {
-        [self baseInit];
-    }
-    NSLog(@"View initialized");
-    return self;
 }
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self)
-    {
-        [self baseInit];
-    }
-    NSLog(@"View initialized");
-    return self;
-}
-
 
 - (void)longPressOnMap:(RMMapView *)map at:(CGPoint)point
 {
@@ -74,8 +60,23 @@
     RMPolylineAnnotation *newLine = [[RMPolylineAnnotation alloc] initWithMapView:self.mapView points:self.waypoints];
     [self.mapView addAnnotation:newLine];
     self.path = newLine;
-    
+
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end
