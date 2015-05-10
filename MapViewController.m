@@ -15,25 +15,45 @@
 @property (strong,nonatomic) RMPolylineAnnotation *path;
 @end
 
+
+
+
 @implementation MapViewController
 
-- (void)viewDidLoad {
+- (void)transmitter:(UIButton *) sender
+{
+    NSLog(@"GOT BUTTON PRESS");
+}
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     CLLocationCoordinate2D defaultcoord = {37.224920, -80.018715};
     RMMapboxSource *mapSource = [[RMMapboxSource alloc] initWithMapID:@"sachith.ido0pogc"];
-    self.mapView = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:mapSource];
-    self.mapView.centerCoordinate = defaultcoord;
+    CGRect reducedSize = self.view.bounds;
+    reducedSize.origin.y += 20;
+    reducedSize.size.height -= 20;
+    self.mapView = [[RMMapView alloc] initWithFrame:reducedSize andTilesource:mapSource];
     self.mapView.maxZoom = 18;
     self.mapView.minZoom = 2;
     self.mapView.zoom = 17;
+    NSLog(@"View initialized");
+    [self.view addSubview:self.mapView];
+    [self.mapView setCenterCoordinate: defaultcoord];
     self.mapView.delegate = self;
     self.waypoints = [NSMutableArray arrayWithCapacity:50];
     self.path = NULL;
-    [self.view addSubview:self.mapView];
-    NSLog(@"View initialized");
     
-
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button.layer setMasksToBounds:true];
+    [button.layer setCornerRadius:10.0f];
+    [button addTarget:self action:@selector(transmitter:) forControlEvents:UIControlEventTouchDown];
+    [button.layer setBackgroundColor:[UIColor redColor].CGColor];
+    [button setTitle:@"Transmit" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState: UIControlStateNormal];
+    [button setTitleColor:[UIColor blueColor] forState: UIControlStateHighlighted];
+    button.frame = CGRectMake(230.0, 20.0, 80.0, 30.0);
+    [self.mapView addSubview:button];
 }
 
 - (void)longPressOnMap:(RMMapView *)map at:(CGPoint)point

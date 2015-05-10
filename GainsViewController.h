@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GainsViewController : UIViewController
+@interface Gain : NSObject
+    @property(strong,nonatomic) NSString* name;
+    @property(strong,nonatomic) NSArray* value;
+    @property(strong,nonatomic) NSString* code;
+@end
 
+@interface GainsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+{
+    UITableView* myView;
+}
 @end
