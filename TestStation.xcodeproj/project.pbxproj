@@ -240,6 +240,7 @@
 				TargetAttributes = {
 					FE2752371A4E648800A3C09E = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = J2BH58SK5V;
 					};
 					FE2752501A4E648900A3C09E = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -448,16 +449,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"\"$(SRCROOT)/mapbox-ios-sdk\"/**",
 				);
 				INFOPLIST_FILE = TestStation/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TestStation;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -466,16 +469,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"\"$(SRCROOT)/mapbox-ios-sdk\"/**",
 				);
 				INFOPLIST_FILE = TestStation/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TestStation;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -494,7 +499,7 @@
 				);
 				INFOPLIST_FILE = TestStationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TestStationTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestStation.app/TestStation";
 			};
 			name = Debug;
@@ -509,7 +514,7 @@
 				);
 				INFOPLIST_FILE = TestStationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TestStationTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestStation.app/TestStation";
 			};
 			name = Release;
