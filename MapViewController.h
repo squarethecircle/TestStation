@@ -10,5 +10,7 @@
 #import "Mapbox.h"
 
 @interface MapViewController : UIViewController<RMMapViewDelegate>
-
+{
+    CLLocationCoordinate2D draggedAnnotation;
+}
 @end

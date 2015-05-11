@@ -28,11 +28,10 @@
     picker.frame = CGRectMake(self.view.frame.size.width/2 - 100, self.view.frame.size.height/2 - 150, 200, 20);
     picker.dataSource = self;
     picker.delegate = self;
-    [picker selectRow:((NSNumber*)self.currentVal[0]).intValue inComponent:0 animated:false];
-    [picker selectRow:((NSNumber*)self.currentVal[1]).intValue inComponent:1 animated:false];
-    [picker selectRow:((NSNumber*)self.currentVal[2]).intValue inComponent:2 animated:false];
+    [picker selectRow:9-((NSNumber*)self.currentVal[0]).intValue inComponent:0 animated:false];
+    [picker selectRow:9-((NSNumber*)self.currentVal[1]).intValue inComponent:1 animated:false];
+    [picker selectRow:9-((NSNumber*)self.currentVal[2]).intValue inComponent:2 animated:false];
 
-    
     [self.view addSubview:picker];
 }
 
@@ -49,7 +48,7 @@
 - (UIView*)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
 {
     if (view != nil) return view;
-    NSString* num = [NSString stringWithFormat:@"%d", row];
+    NSString* num = [NSString stringWithFormat:@"%d", 9-(int)row];
     UILabel* numLabel = [[UILabel alloc] init];
     numLabel.text = num;
     numLabel.font = [UIFont systemFontOfSize:100];

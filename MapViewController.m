@@ -52,7 +52,7 @@
     [button setTitle:@"Transmit" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor whiteColor] forState: UIControlStateNormal];
     [button setTitleColor:[UIColor blueColor] forState: UIControlStateHighlighted];
-    button.frame = CGRectMake(230.0, 20.0, 80.0, 30.0);
+    button.frame = CGRectMake(260.0, 20.0, 80.0, 30.0);
     [self.mapView addSubview:button];
 }
 
@@ -61,7 +61,7 @@
     NSLog(@"Gesture recognized");
     CLLocationCoordinate2D waypointCoord = [self.mapView pixelToCoordinate:point];
     RMAnnotation *newWaypoint = [[RMAnnotation alloc] initWithMapView:self.mapView coordinate:waypointCoord andTitle:@([self.waypoints count]).stringValue];
-    newWaypoint.layer = [[RMMarker alloc] initWithMapboxMarkerImage:@"square-stroked" tintColorHex:@"#ff0000" sizeString:@"small"];
+    newWaypoint.layer = [[RMMarker alloc] initWithMapboxMarkerImage:@"square-stroked" tintColorHex:@"#ff0000" sizeString:@"medium"];
     [self.mapView addAnnotation:newWaypoint];
     [self.waypoints addObject:[[CLLocationWithEqualityTest alloc] initWithLatitude:waypointCoord.latitude longitude:waypointCoord.longitude]];
     RMPolylineAnnotation *newLine = [[RMPolylineAnnotation alloc] initWithMapView:self.mapView points:self.waypoints];
@@ -72,7 +72,7 @@
     
 }
 
-- (void) longPressOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
+- (void) doubleTapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
 {
     [self.mapView removeAnnotation: self.path];
     [self.mapView removeAnnotation: annotation];
@@ -89,6 +89,27 @@
     }
 }
 
+- (void)mapView:(RMMapView *)mapView annotation:(RMAnnotation *)annotation didChangeDragState:(RMMapLayerDragState)newState fromOldState:(RMMapLayerDragState)oldState
+{
+    if (oldState == RMMapLayerDragStateNone)
+        draggedAnnotation = annotation.coordinate;
+    if (oldState == RMMapLayerDragStateDragging)
+    {
+        [self.mapView removeAnnotation: self.path];
+        
+        NSUInteger removeIndex = [self.waypoints indexOfObject:[[CLLocationWithEqualityTest alloc] initWithLatitude:draggedAnnotation.latitude longitude:draggedAnnotation.longitude]];
+        [self.waypoints removeObjectAtIndex:removeIndex];
+        [self.waypoints insertObject:[[CLLocationWithEqualityTest alloc] initWithLatitude: annotation.coordinate.latitude longitude:annotation.coordinate.longitude] atIndex:removeIndex];
+        
+            RMPolylineAnnotation *newLine = [[RMPolylineAnnotation alloc] initWithMapView:self.mapView points:self.waypoints];
+            [self.mapView addAnnotation:newLine];
+            self.path = newLine;
+    }
+}
+- (BOOL) mapView:(RMMapView *)mapView shouldDragAnnotation:(RMAnnotation *)annotation
+{
+    return true;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
