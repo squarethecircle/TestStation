@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Mapbox.h"
+#import "BLE.h"
 
-@interface MapViewController : UIViewController<RMMapViewDelegate>
+@interface MapViewController : UIViewController<RMMapViewDelegate, BLEDelegate>
 {
     CLLocationCoordinate2D draggedAnnotation;
+    UIActivityIndicatorView *activityIndicator;
 }
 @end

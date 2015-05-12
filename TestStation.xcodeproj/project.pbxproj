@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE179A171B0134930073E20F /* BLE.m in Sources */ = {isa = PBXBuildFile; fileRef = FE179A161B0134930073E20F /* BLE.m */; };
 		FE27523E1A4E648800A3C09E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE27523D1A4E648800A3C09E /* main.m */; };
 		FE2752411A4E648800A3C09E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2752401A4E648800A3C09E /* AppDelegate.m */; };
 		FE2752471A4E648800A3C09E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2752451A4E648800A3C09E /* Main.storyboard */; };
@@ -58,6 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE179A141B0134740073E20F /* BLE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLE.h; sourceTree = "<group>"; };
+		FE179A161B0134930073E20F /* BLE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLE.m; sourceTree = "<group>"; };
+		FE179A181B0134BA0073E20F /* BLEDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLEDefines.h; sourceTree = "<group>"; };
 		FE2752381A4E648800A3C09E /* TestStation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestStation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE27523C1A4E648800A3C09E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE27523D1A4E648800A3C09E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -112,6 +116,9 @@
 		FE27522F1A4E648800A3C09E = {
 			isa = PBXGroup;
 			children = (
+				FE179A161B0134930073E20F /* BLE.m */,
+				FE179A181B0134BA0073E20F /* BLEDefines.h */,
+				FE179A141B0134740073E20F /* BLE.h */,
 				FEC9E8331AFFFCFF00C7F15D /* GainSetViewController.h */,
 				FEC9E8341AFFFCFF00C7F15D /* GainSetViewController.m */,
 				FE2752871A4FB08F00A3C09E /* GainsViewController.h */,
@@ -319,6 +326,7 @@
 				FEC9E8351AFFFCFF00C7F15D /* GainSetViewController.m in Sources */,
 				FE27528C1A4FB09D00A3C09E /* TelemetryViewController.m in Sources */,
 				FE27527B1A4E711E00A3C09E /* MapViewController.m in Sources */,
+				FE179A171B0134930073E20F /* BLE.m in Sources */,
 				FE2752801A4FA0BD00A3C09E /* CLLocationWithEqualityTest.m in Sources */,
 				FE2752891A4FB08F00A3C09E /* GainsViewController.m in Sources */,
 				FE2752411A4E648800A3C09E /* AppDelegate.m in Sources */,

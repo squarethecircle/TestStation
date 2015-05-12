@@ -28,6 +28,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    [self setNeedsStatusBarAppearanceUpdate];
+    [self.navigationController.navigationBar setBarTintColor: [[UIColor alloc] initWithRed:31/255.f green:58/255.f blue:147/255.f alpha:0.9]];
+    [self.navigationController.navigationBar setTranslucent:YES];
     self.view.backgroundColor = [UIColor whiteColor];
     CGRect reducedSize = self.view.bounds;
     myView = [[UITableView alloc] initWithFrame:reducedSize];
@@ -78,6 +82,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 /*
