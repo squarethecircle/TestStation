@@ -193,6 +193,7 @@ static int rssi = 0;
     
 #if TARGET_OS_IPHONE
     [self.CM scanForPeripheralsWithServices:[NSArray arrayWithObject:[CBUUID UUIDWithString:@RBL_SERVICE_UUID]] options:nil];
+    
 #else
     [self.CM scanForPeripheralsWithServices:nil options:nil]; // Start scanning
 #endif

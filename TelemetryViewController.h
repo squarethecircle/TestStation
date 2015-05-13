@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface TelemetryViewController : UIViewController
+#import "TelemetryData.h"
+@interface TelemetryViewController : UIViewController<TelemetryDataDelegate>
 
 @end

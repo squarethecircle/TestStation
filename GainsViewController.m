@@ -37,13 +37,13 @@
     myView = [[UITableView alloc] initWithFrame:reducedSize];
     myView.dataSource = self;
     myView.delegate = self;
-    Gain* rollkp = [[Gain alloc] initGain:@"ROLLKP" value:[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)0],[NSNumber numberWithInteger:(NSInteger)2],[NSNumber numberWithInteger:(NSInteger)0], nil] transmit:@"RKP"];
-    Gain* rollkd = [[Gain alloc] initGain:@"ROLLKD" value:[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)0],[NSNumber numberWithInteger:(NSInteger)0],[NSNumber numberWithInteger:(NSInteger)5], nil] transmit:@"RKD"];
-    Gain* yawkpail = [[Gain alloc] initGain:@"YAWKPAIL" value:[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)0],[NSNumber numberWithInteger:(NSInteger)2],[NSNumber numberWithInteger:(NSInteger)5], nil] transmit:@"YKP"];
-    Gain* yawkdail = [[Gain alloc] initGain:@"YAWKDAIL" value:[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)0],[NSNumber numberWithInteger:(NSInteger)1],[NSNumber numberWithInteger:(NSInteger)0], nil] transmit:@"YKD"];
-    Gain* pitchgain = [[Gain alloc] initGain:@"PITCHGAIN" value:[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)0],[NSNumber numberWithInteger:(NSInteger)1],[NSNumber numberWithInteger:(NSInteger)5], nil] transmit:@"PKP"];
-    Gain* pitchkd = [[Gain alloc] initGain:@"PITCHKD" value:[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)0],[NSNumber numberWithInteger:(NSInteger)0],[NSNumber numberWithInteger:(NSInteger)5], nil] transmit:@"PKD"];
-    Gain* rollelevmix = [[Gain alloc] initGain:@"ROLLELEVMIX" value:[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)0],[NSNumber numberWithInteger:(NSInteger)1],[NSNumber numberWithInteger:(NSInteger)5], nil] transmit:@"REM"];
+    Gain* rollkp = [[Gain alloc] initGain:@"ROLLKP" value:[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)2],[NSNumber numberWithInteger:(NSInteger)0], nil] transmit:@"RKP"];
+    Gain* rollkd = [[Gain alloc] initGain:@"ROLLKD" value:[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)0],[NSNumber numberWithInteger:(NSInteger)5], nil] transmit:@"RKD"];
+    Gain* yawkpail = [[Gain alloc] initGain:@"YAWKPAIL" value:[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)2],[NSNumber numberWithInteger:(NSInteger)5], nil] transmit:@"YKP"];
+    Gain* yawkdail = [[Gain alloc] initGain:@"YAWKDAIL" value:[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)1],[NSNumber numberWithInteger:(NSInteger)0], nil] transmit:@"YKD"];
+    Gain* pitchgain = [[Gain alloc] initGain:@"PITCHGAIN" value:[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)1],[NSNumber numberWithInteger:(NSInteger)5], nil] transmit:@"PKP"];
+    Gain* pitchkd = [[Gain alloc] initGain:@"PITCHKD" value:[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)0],[NSNumber numberWithInteger:(NSInteger)5], nil] transmit:@"PKD"];
+    Gain* rollelevmix = [[Gain alloc] initGain:@"ROLLELEVMIX" value:[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:(NSInteger)1],[NSNumber numberWithInteger:(NSInteger)5], nil] transmit:@"REM"];
     self.tableData = [NSArray arrayWithObjects:rollkp,rollkd,yawkpail,yawkdail,pitchgain,pitchkd,rollelevmix, nil];
 
     [self.view addSubview:myView];

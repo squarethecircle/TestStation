@@ -14,5 +14,7 @@
 {
     CLLocationCoordinate2D draggedAnnotation;
     UIActivityIndicatorView *activityIndicator;
+    UIBarButtonItem *connectToggle;
+    BOOL bluetoothConnected;
 }
 @end

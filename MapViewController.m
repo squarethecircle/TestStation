@@ -9,18 +9,19 @@
 #import "MapViewController.h"
 #import "CLLocationWithEqualityTest.h"
 #import "BLE.h"
+#import "TelemetryData.h"
 
 @interface MapViewController ()
 @property (strong,nonatomic) RMMapView *mapView;
 @property (strong,nonatomic) NSMutableArray *waypoints;
 @property (strong,nonatomic) RMPolylineAnnotation *path;
-@property (strong,nonatomic) BLE *bleShield;
 @end
 
 
 
 
 @implementation MapViewController
+TelemetryData* telemetryData;
 
 - (void)transmitter:(UIButton *) sender
 {
@@ -30,12 +31,19 @@
 
 -(void) connectionTimer:(NSTimer *)timer
 {
-    if(self.bleShield.peripherals.count > 0)
+    if(telemetryData.bleShield.peripherals.count > 0)
     {
-        [self.bleShield connectPeripheral:[self.bleShield.peripherals objectAtIndex:0]];
+        [telemetryData.bleShield connectPeripheral:[telemetryData.bleShield.peripherals objectAtIndex:0]];
     }
     else
     {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Bluetooth Connection Error"
+                                                                       message:@"BLE Not Found"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
         [activityIndicator stopAnimating];
         //self.navigationItem.leftBarButtonItem.enabled = YES;
     }
@@ -45,19 +53,15 @@
 {
     NSData *d = [NSData dataWithBytes:data length:length];
     NSString *s = [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding];
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Message Received"
-                                                                                    message:s
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {}];
-    [alert addAction:defaultAction];
-    [self presentViewController:alert animated:YES completion:nil];
-
+    [telemetryData appendTelemetry:s];
+       
     }
 
 -(void) bleDidConnect
 {
     [activityIndicator stopAnimating];
+    bluetoothConnected = YES;
+    connectToggle.title = @"Disconnect";
     //self.navigationItem.leftBarButtonItem.enabled = YES;
     //[self.navigationItem.leftBarButtonItem setTitle:@"Disconnect"];
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Bluetooth Setup"
@@ -67,23 +71,38 @@
                                                           handler:^(UIAlertAction * action) {}];
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:YES completion:nil];
- 
+    
     NSLog(@"bleDidConnect");
 }
 
-- (void)connectBluetooth:(UIButton *) sender
+-(void) bleDidDisconnect
 {
-    if (self.bleShield.activePeripheral)
-        if(self.bleShield.activePeripheral.state == CBPeripheralStateConnected)
+    bluetoothConnected = NO;
+    connectToggle.title = @"Connect";
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Bluetooth Setup"
+                                                                   message:@"You have disconnected."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    NSLog(@"bleDidDisconnect");
+}
+- (void)connectBluetooth
+{
+    if (telemetryData.bleShield.activePeripheral)
+        if(telemetryData.bleShield.activePeripheral.state == CBPeripheralStateConnected)
         {
-            [[self.bleShield CM] cancelPeripheralConnection:[self.bleShield activePeripheral]];
+            [[telemetryData.bleShield CM] cancelPeripheralConnection:[telemetryData.bleShield activePeripheral]];
+            NSLog(@"WHAT???");
             return;
         }
     
-    if (self.bleShield.peripherals)
-        self.bleShield.peripherals = nil;
-    
-    [self.bleShield findBLEPeripherals:3];
+    if (telemetryData.bleShield.peripherals)
+        telemetryData.bleShield.peripherals = nil;
+    NSLog(@"QAT???");
+    [telemetryData.bleShield findBLEPeripherals:3];
+    NSLog(@"ZAT???");
     
     [NSTimer scheduledTimerWithTimeInterval:(float)3.0 target:self selector:@selector(connectionTimer:) userInfo:nil repeats:NO];
     //[self.mapView addSubview:activityIndicator];
@@ -92,11 +111,41 @@
 
 }
 
+- (void)disconnectBluetooth
+{
+    if (telemetryData.bleShield.activePeripheral)
+        if(telemetryData.bleShield.activePeripheral.state == CBPeripheralStateConnected)
+        {
+            [[telemetryData.bleShield CM] cancelPeripheralConnection:[telemetryData.bleShield activePeripheral]];
+            return;
+        }
+    
+    if (telemetryData.bleShield.peripherals)
+        telemetryData.bleShield.peripherals = nil;
+}
 
+- (void)toggleBluetooth:(UIButton *) sender
+{
+    if (bluetoothConnected)
+    {
+        NSLog(@"Disconnecting...");
+      [self disconnectBluetooth];
+    }
+    else
+    {
+        NSLog(@"Connecting...");
+       [self connectBluetooth];
+    }
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    telemetryData = [TelemetryData telemetryDataFactory];
+    bluetoothConnected = NO;
+    telemetryData.bleShield = [[BLE alloc] init];
+    [telemetryData.bleShield controlSetup];
+    telemetryData.bleShield.delegate = self;
     [self setNeedsStatusBarAppearanceUpdate];
     activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     activityIndicator.center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
@@ -117,10 +166,10 @@
     self.path = NULL;
     
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Transmit" style:UIBarButtonItemStylePlain target:self action:@selector(transmitter:)];
-    UIBarButtonItem *connect = [[UIBarButtonItem alloc] initWithTitle:@"Connect" style:UIBarButtonItemStylePlain target:self action:@selector(connectBluetooth:)];
+   connectToggle = [[UIBarButtonItem alloc] initWithTitle:@"Connect" style:UIBarButtonItemStylePlain target:self action:@selector(toggleBluetooth:)];
     
     [button setTintColor:[UIColor whiteColor]];
-    [connect setTintColor:[UIColor whiteColor]];
+    [connectToggle setTintColor:[UIColor whiteColor]];
     //[button.layer setMasksToBounds:true];
     //[button.layer setCornerRadius:10.0f];
     //[button addTarget:self action:@selector(transmitter:) forControlEvents:UIControlEventTouchDown];
@@ -131,7 +180,7 @@
     //button.frame = CGRectMake(260.0, 20.0, 80.0, 30.0);
     
     UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    [toolbar setItems:[NSArray arrayWithObjects:connect, flex, button,nil]];
+    [toolbar setItems:[NSArray arrayWithObjects:connectToggle, flex, button,nil]];
     [self.mapView addSubview:toolbar];
     [self.view addSubview:activityIndicator];
     //[self.mapView addSubview:button];
@@ -142,7 +191,7 @@
     NSLog(@"Gesture recognized");
     CLLocationCoordinate2D waypointCoord = [self.mapView pixelToCoordinate:point];
     RMAnnotation *newWaypoint = [[RMAnnotation alloc] initWithMapView:self.mapView coordinate:waypointCoord andTitle:@([self.waypoints count]).stringValue];
-    newWaypoint.layer = [[RMMarker alloc] initWithMapboxMarkerImage:@"square-stroked" tintColorHex:@"#ff0000" sizeString:@"medium"];
+    newWaypoint.layer = [[RMMarker alloc] initWithMapboxMarkerImage:@"square-stroked" tintColorHex:@"#ff0000" sizeString:@"large"];
     [self.mapView addAnnotation:newWaypoint];
     [self.waypoints addObject:[[CLLocationWithEqualityTest alloc] initWithLatitude:waypointCoord.latitude longitude:waypointCoord.longitude]];
     RMPolylineAnnotation *newLine = [[RMPolylineAnnotation alloc] initWithMapView:self.mapView points:self.waypoints];
