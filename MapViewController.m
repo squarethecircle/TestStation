@@ -25,7 +25,7 @@ TelemetryData* telemetryData;
 
 - (void)transmitter:(UIButton *) sender
 {
-    NSLog(@"GOT BUTTON PRESS");
+    NSLog(@"%d",_mapView.annotations.count);
 }
 
 
@@ -190,10 +190,10 @@ TelemetryData* telemetryData;
 {
     NSLog(@"Gesture recognized");
     CLLocationCoordinate2D waypointCoord = [self.mapView pixelToCoordinate:point];
-    RMAnnotation *newWaypoint = [[RMAnnotation alloc] initWithMapView:self.mapView coordinate:waypointCoord andTitle:@([self.waypoints count]).stringValue];
-    newWaypoint.layer = [[RMMarker alloc] initWithMapboxMarkerImage:@"square-stroked" tintColorHex:@"#ff0000" sizeString:@"large"];
-    [self.mapView addAnnotation:newWaypoint];
     [self.waypoints addObject:[[CLLocationWithEqualityTest alloc] initWithLatitude:waypointCoord.latitude longitude:waypointCoord.longitude]];
+    RMAnnotation *newWaypoint = [[RMAnnotation alloc] initWithMapView:self.mapView coordinate:waypointCoord andTitle:@([self.waypoints count]).stringValue];
+
+    [self.mapView addAnnotation:newWaypoint];
     RMPolylineAnnotation *newLine = [[RMPolylineAnnotation alloc] initWithMapView:self.mapView points:self.waypoints];
     if (self.path != NULL) [self.mapView removeAnnotation: self.path];
     self.path = newLine;
@@ -202,21 +202,36 @@ TelemetryData* telemetryData;
     
 }
 
+- (RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
+{
+    CLLocationWithEqualityTest* query = [[CLLocationWithEqualityTest alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+    NSUInteger index = [_waypoints indexOfObject:query]+1;
+    //UIImage* icon = [[UIImage alloc] initWithContentsOfFile:[[NSString alloc] initWithFormat:@"mapIcons/red83.png"]];
+    return [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:[[NSString alloc] initWithFormat:@"red%02lu",(unsigned long)index]]];
+}
+
+
 - (void) doubleTapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map
 {
-    [self.mapView removeAnnotation: self.path];
-    [self.mapView removeAnnotation: annotation];
     [self.waypoints removeObject:[[CLLocationWithEqualityTest alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude]];
+    [self.mapView removeAllAnnotations];
     if ([self.waypoints count] > 0)
     {
         RMPolylineAnnotation *newLine = [[RMPolylineAnnotation alloc] initWithMapView:self.mapView points:self.waypoints];
         [self.mapView addAnnotation:newLine];
         self.path = newLine;
+        for (CLLocationWithEqualityTest* waypoint in _waypoints)
+        {
+            CLLocationCoordinate2D waypointCoord = {waypoint.coordinate.latitude, waypoint.coordinate.longitude};
+            RMAnnotation *newWaypoint = [[RMAnnotation alloc] initWithMapView:self.mapView coordinate:waypointCoord andTitle:@([self.waypoints count]).stringValue];
+            [self.mapView addAnnotation:newWaypoint];
+        }
     }
     else
     {
         self.path = NULL;
     }
+
 }
 
 - (void)mapView:(RMMapView *)mapView annotation:(RMAnnotation *)annotation didChangeDragState:(RMMapLayerDragState)newState fromOldState:(RMMapLayerDragState)oldState

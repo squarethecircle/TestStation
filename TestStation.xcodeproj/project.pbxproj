@@ -24,6 +24,7 @@
 		FE2752801A4FA0BD00A3C09E /* CLLocationWithEqualityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE27527F1A4FA0BD00A3C09E /* CLLocationWithEqualityTest.m */; };
 		FE2752891A4FB08F00A3C09E /* GainsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2752881A4FB08F00A3C09E /* GainsViewController.m */; };
 		FE27528C1A4FB09D00A3C09E /* TelemetryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE27528B1A4FB09D00A3C09E /* TelemetryViewController.m */; };
+		FEC46CCB1B053F8C00223376 /* mapIcons in Resources */ = {isa = PBXBuildFile; fileRef = FEC46CCA1B053F8C00223376 /* mapIcons */; };
 		FEC9E8351AFFFCFF00C7F15D /* GainSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC9E8341AFFFCFF00C7F15D /* GainSetViewController.m */; };
 		FEDA0BE11B02BF2C0093CE1B /* TelemetryData.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0BE01B02BF2C0093CE1B /* TelemetryData.m */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		FE2752881A4FB08F00A3C09E /* GainsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GainsViewController.m; sourceTree = "<group>"; };
 		FE27528A1A4FB09D00A3C09E /* TelemetryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelemetryViewController.h; sourceTree = "<group>"; };
 		FE27528B1A4FB09D00A3C09E /* TelemetryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelemetryViewController.m; sourceTree = "<group>"; };
+		FEC46CCA1B053F8C00223376 /* mapIcons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = mapIcons; path = ../mapIcons; sourceTree = "<group>"; };
 		FEC9E8331AFFFCFF00C7F15D /* GainSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GainSetViewController.h; sourceTree = "<group>"; };
 		FEC9E8341AFFFCFF00C7F15D /* GainSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GainSetViewController.m; sourceTree = "<group>"; };
 		FEDA0BDF1B02BF2C0093CE1B /* TelemetryData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelemetryData.h; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		FE27523A1A4E648800A3C09E /* TestStation */ = {
 			isa = PBXGroup;
 			children = (
+				FEC46CCA1B053F8C00223376 /* mapIcons */,
 				FE27523F1A4E648800A3C09E /* AppDelegate.h */,
 				FE2752401A4E648800A3C09E /* AppDelegate.m */,
 				FE2752451A4E648800A3C09E /* Main.storyboard */,
@@ -307,6 +310,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEC46CCB1B053F8C00223376 /* mapIcons in Resources */,
 				FE2752471A4E648800A3C09E /* Main.storyboard in Resources */,
 				FE2752751A4E6E9B00A3C09E /* Mapbox.bundle in Resources */,
 				FE27524C1A4E648800A3C09E /* LaunchScreen.xib in Resources */,
